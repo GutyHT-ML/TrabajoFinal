@@ -22,7 +22,7 @@ class UserController extends Controller
         if($user->save()){
             return response()->json(['User'=>$user], 201);
         }
-                
+
         return abort(400, 'Error al generar el registro');
     }
     public function logIn(Request $request){
@@ -36,9 +36,7 @@ class UserController extends Controller
         if(! $user || ! Hash::check($request->password, $user->password)){
             return response()->json(['error' => 'Credenciales incorrectas'], 401);
         }
-        TokenApp::create(['user_id'=>$user->id,'token'=>$response]);
         $token = $user->createToken($request->email, ['user:user'])->plainTextToken;
-        Mail::to($user)->send(new Access($request->email));
         return response()->json(['token'=>$token], 201);
     }
 }
