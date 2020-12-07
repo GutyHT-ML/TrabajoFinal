@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('signin', 'UserController@signIn');
 Route::post('login', 'UserController@logIn');
 Route::post('led/{num}', 'AdafruitController@LED')->where(['num'=>'[0-9]+']);
+Route::get('user/profile', 'UserController@showUser')->middleware('auth:sanctum');
+Route::delete('logout', 'UserController@logOut')->middleware('auth:sanctum');
 Route::get('sensor/temperatura', 'AdafruitController@temperatura');
 Route::get('sensor/humedad', 'AdafruitController@humedad');
 Route::get('sensor/luz', 'AdafruitController@luz');

@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
+    public function showUser(Request $request){
+        return $request->user();
+    }
+
     public function signIn(Request $request){
         $request->validate([
             'email'=>'required|email',
@@ -43,5 +47,9 @@ class UserController extends Controller
         $token = $user->createToken($request->email, ['user:user'])->plainTextToken;
         Mail::to($user->email)->send(new Access($request->name));
         return response()->json(['token'=>$token], 201);
+    }
+
+    public function logOut(Request $request){
+        return response()->json(['afectados'=>$request->user()->tokens()->delete()], 200);
     }
 }
