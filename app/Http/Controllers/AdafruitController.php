@@ -15,7 +15,7 @@ class AdafruitController extends Controller
 
     public function __construct()
     {
-        //$this->middleware('auth:sanctum');
+        $this->middleware('auth:sanctum');
     }
 
     public function LED(Request $request, $num){
