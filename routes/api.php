@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('signin', 'UserController@signIn');
 Route::post('login', 'UserController@logIn');
+Route::post('led/{num}', 'AdafruitController@LED')->middleware('auth:sanctum')->where(['num'=>'[0-9]+']);
+Route::post('sensor/temperatura', 'AdafruitController@temperatura')->middleware('auth:sanctum');
+Route::post('sensor/humedad', 'AdafruitController@humedad')->middleware('auth:sanctum');
+Route::post('sensor/luz', 'AdafruitController@luz')->middleware('auth:sanctum');
+Route::post('sensor/distancia', 'AdafruitController@distancia')->middleware('auth:sanctum');
+Route::post('sensor/presencia', 'AdafruitController@presencia')->middleware('auth:sanctum');
+
+

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'smtp'),
+    'default' => 'mailgun',
 
     /*
     |--------------------------------------------------------------------------
@@ -52,6 +52,10 @@ return [
             'path' => '/usr/sbin/sendmail -bs',
         ],
 
+        'mailgun' => [
+            'transport' => 'mailgun',
+        ],
+
         'log' => [
             'transport' => 'log',
             'channel' => env('MAIL_LOG_CHANNEL'),
@@ -74,8 +78,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', '19170050@uttcampus.edu.mx'),
+        'name' => env('MAIL_FROM_NAME', 'GutyoFF'),
     ],
 
     /*
