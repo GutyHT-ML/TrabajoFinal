@@ -10,24 +10,15 @@ use Illuminate\Queue\SerializesModels;
 class Access extends Mailable
 {
     use Queueable, SerializesModels;
-    public $email;
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct(string $EMAIL)
+    public $user;
+
+    public function __construct(string $USER)
     {
-        $this->email = $EMAIL;
+        $this->user = $USER;
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
     public function build()
     {
-        return $this->from('19170050@uttcampus.edu.mx')->markdown('access',['email'=>$this->email]);
+        return $this->markdown('access');
     }
 }

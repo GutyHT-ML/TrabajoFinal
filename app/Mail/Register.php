@@ -11,25 +11,14 @@ class Register extends Mailable
 {
     use Queueable, SerializesModels;
     public $user;
-    public $email;
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct($USER, $EMAIL)
+
+    public function __construct($USER)
     {
         $this->user = $USER;
-        $this->email = $EMAIL;
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
     public function build()
     {
-        return $this->from('19170050@uttcampus.edu.mx')->markdown('register',['email'=>$this->email, 'user'=>$this->user]);
+        return $this->markdown('register');
     }
 }
