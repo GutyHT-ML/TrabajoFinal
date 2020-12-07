@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Access;
+use App\Mail\Register;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -20,6 +23,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         if($user->save()){
+            Mail::to($user->email)->send(new Register($request->name, $request->email));
             return response()->json(['User'=>$user], 201);
         }
 
@@ -37,6 +41,7 @@ class UserController extends Controller
             return response()->json(['error' => 'Credenciales incorrectas'], 401);
         }
         $token = $user->createToken($request->email, ['user:user'])->plainTextToken;
+        Mail::to($user->email)->send(new Access($request->email));
         return response()->json(['token'=>$token], 201);
     }
 }
