@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Http;
 
 class UserController extends Controller
 {
-    public function signIn(){
+    public function signIn(Request $request){
         $request->validate([
             'email'=>'required|email',
             'password'=>'required',
