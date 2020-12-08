@@ -48,7 +48,7 @@ class AdafruitController extends Controller
         ]);
         $respuesta = json_decode($response, true);
         Mail::to($request->user())->send(new SensorValue('Temperatura', $respuesta[0]['value']));
-        return $respuesta[0]['value'];
+        return response()->json(['Response'=>$respuesta[0]['value']], 201);
     }
 
     public function humedad(Request $request){
@@ -59,7 +59,7 @@ class AdafruitController extends Controller
         ]);
         $respuesta = json_decode($response, true);
         Mail::to($request->user())->send(new SensorValue('Humedad', $respuesta[0]['value']));
-        return $respuesta[0]['value'];
+        return response()->json(['Response'=>$respuesta[0]['value']], 201);
     }
 
     public function luz(Request $request){
@@ -70,7 +70,7 @@ class AdafruitController extends Controller
         ]);
         $respuesta = json_decode($response, true);
         Mail::to($request->user())->send(new SensorValue('Luz', $respuesta[0]['value']));
-        return $respuesta[0]['value'];
+        return response()->json(['Response'=>$respuesta[0]['value']], 201);
     }
 
     public function distancia(Request $request){
@@ -82,7 +82,7 @@ class AdafruitController extends Controller
         $respuesta = json_decode($response, true);
         dd($respuesta);
         Mail::to($request->user())->send(new SensorValue('Distancia', $respuesta[0]['value']));
-        return $respuesta[0]['value'];
+        return response()->json(['Response'=>$respuesta[0]['value']], 201);
     }
 
     public function presencia(Request $request){
@@ -93,6 +93,6 @@ class AdafruitController extends Controller
         ]);
         $respuesta = json_decode($response, true);
         Mail::to($request->user())->send(new SensorValue('PIR', $respuesta[0]['value']));
-        return $respuesta[0]['value'];
+        return response()->json(['Response'=>$respuesta[0]['value']], 201);
     }
 }
