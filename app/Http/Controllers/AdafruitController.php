@@ -40,7 +40,7 @@ class AdafruitController extends Controller
         Mail::to($request->user())->send(new LedAction($num, $value));
         Sensor::create([
             'sensor'=>'led',
-            'value'=>$value,
+            'value'=>strval($value),
             'user_id'=>$request->user()->id
         ]);
         return response()->json(["Led ".$num." value" => $value]);
@@ -53,10 +53,11 @@ class AdafruitController extends Controller
             'limit' => '1'
         ]);
         $respuesta = json_decode($response, true);
+        $value = $respuesta[0]['value'];
         Mail::to($request->user())->send(new SensorValue('Temperatura', $respuesta[0]['value']));
         Sensor::create([
             'sensor'=>'temperatura',
-            'value'=>$respuesta[0]['value'],
+            'value'=>strval($value),
             'user_id'=>$request->user()->id
 
         ]);
@@ -70,10 +71,11 @@ class AdafruitController extends Controller
             'limit' => '1'
         ]);
         $respuesta = json_decode($response, true);
+        $value = $respuesta[0]['value'];
         Mail::to($request->user())->send(new SensorValue('Humedad', $respuesta[0]['value']));
         Sensor::create([
             'sensor'=>'humedad',
-            'value'=>$respuesta[0]['value'],
+            'value'=>strval($value),
             'user_id'=>$request->user()->id
 
         ]);
@@ -87,10 +89,11 @@ class AdafruitController extends Controller
             'limit' => '1'
         ]);
         $respuesta = json_decode($response, true);
+        $value = $respuesta[0]['value'];
         Mail::to($request->user())->send(new SensorValue('Luz', $respuesta[0]['value']));
         Sensor::create([
             'sensor'=>'luz',
-            'value'=>$respuesta[0]['value'],
+            'value'=>strval($value),
             'user_id'=>$request->user()->id
         ]);
         return response()->json(['Response'=>$respuesta[0]['value']], 201);
@@ -103,11 +106,11 @@ class AdafruitController extends Controller
             'limit' => '1'
         ]);
         $respuesta = json_decode($response, true);
-        dd($respuesta);
+        $value = $respuesta[0]['value'];
         Mail::to($request->user())->send(new SensorValue('Distancia', $respuesta[0]['value']));
         Sensor::create([
             'sensor'=>'distancia',
-            'value'=>$respuesta[0]['value'],
+            'value'=>strval($value),
             'user_id'=>$request->user()->id
         ]);
         return response()->json(['Response'=>$respuesta[0]['value']], 201);
@@ -120,10 +123,11 @@ class AdafruitController extends Controller
             'limit' => '1'
         ]);
         $respuesta = json_decode($response, true);
+        $value = $respuesta[0]['value'];
         Mail::to($request->user())->send(new SensorValue('PIR', $respuesta[0]['value']));
         Sensor::create([
             'sensor'=>'presencia',
-            'value'=>$respuesta[0]['value'],
+            'value'=>strval($value),
             'user_id'=>$request->user()->id
         ]);
         return response()->json(['Response'=>$respuesta[0]['value']], 201);
