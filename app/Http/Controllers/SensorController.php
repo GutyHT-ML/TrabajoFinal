@@ -13,32 +13,32 @@ class SensorController extends Controller
     }
 
     public function getLed(){
-        $sensores = Sensor::where('sensor', 'led');
+        $sensores = Sensor::where('sensor', 'led')->get();
         return response()->json(['sensores'=>$sensores], 200);
     }
 
     public function getTemperature(){
-        $sensores = Sensor::where('sensor', 'temperatura');
+        $sensores = Sensor::where('sensor', 'temperatura')->get();
         return response()->json(['sensores'=>$sensores], 200);
     }
 
     public function getHumidity(){
-        $sensores = Sensor::where('sensor', 'humedad');
+        $sensores = Sensor::where('sensor', 'humedad')->get();
         return response()->json(['sensores'=>$sensores], 200);
     }
 
     public function getLight(){
-        $sensores = Sensor::where('sensor', 'luz');
+        $sensores = Sensor::where('sensor', 'luz')->get();
         return response()->json(['sensores'=>$sensores], 200);
     }
 
     public function getDistance(){
-        $sensores = Sensor::where('sensor', 'distancia');
+        $sensores = Sensor::where('sensor', 'distancia')->get();
         return response()->json(['sensores'=>$sensores], 200);
     }
 
     public function getPresence(){
-        $sensores = Sensor::where('sensor', 'presencia');
+        $sensores = Sensor::where('sensor', 'presencia')->get();
         return response()->json(['sensores'=>$sensores], 200);
     }
 }
