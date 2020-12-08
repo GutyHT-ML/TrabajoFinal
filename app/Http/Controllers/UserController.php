@@ -27,7 +27,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         if($user->save()){
-            Mail::to($user->email)->send(new Register($request->name));
+            Mail::to($user->email)->send(new Register());
             return response()->json(['User'=>$user], 201);
         }
 
@@ -45,7 +45,7 @@ class UserController extends Controller
             return response()->json(['error' => 'Credenciales incorrectas'], 401);
         }
         $token = $user->createToken($request->email, ['user:user'])->plainTextToken;
-        Mail::to($user->email)->send(new Access($request->name));
+        Mail::to($user->email)->send(new Access());
         return response()->json(['token'=>$token], 201);
     }
 

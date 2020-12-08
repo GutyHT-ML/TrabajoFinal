@@ -10,11 +10,10 @@ use Illuminate\Queue\SerializesModels;
 class Register extends Mailable
 {
     use Queueable, SerializesModels;
-    public $user;
 
-    public function __construct($USER)
+    public function __construct()
     {
-        $this->user = $USER;
+        //
     }
 
     public function build()

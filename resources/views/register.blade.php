@@ -1,3 +1,3 @@
 @component('mail::message')
-    You were succesfully registered as {{ $user }}.
+    You were succesfully registered!
 @endcomponent
