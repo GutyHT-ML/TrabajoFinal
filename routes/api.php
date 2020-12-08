@@ -24,5 +24,11 @@ Route::get('sensor/humedad', 'AdafruitController@humedad');
 Route::get('sensor/luz', 'AdafruitController@luz');
 Route::get('sensor/distancia', 'AdafruitController@distancia');
 Route::get('sensor/presencia', 'AdafruitController@presencia');
+Route::get('led','SensorController@getLed');
+Route::get('temperatura','SensorController@getTemperature');
+Route::get('humedad','SensorController@getHumidity');
+Route::get('luz','SensorController@getLight');
+Route::get('distancia','SensorController@getDistance');
+Route::get('presencia','SensorController@getPresence');
 
 
