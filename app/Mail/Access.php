@@ -10,11 +10,10 @@ use Illuminate\Queue\SerializesModels;
 class Access extends Mailable
 {
     use Queueable, SerializesModels;
-    public $user;
 
-    public function __construct(string $USER)
+    public function __construct()
     {
-        $this->user = $USER;
+        //
     }
 
     public function build()
