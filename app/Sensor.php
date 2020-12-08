@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sensor extends Model
 {
-    protected $fillable = ['sensor', 'user_id'];
+    protected $fillable = ['sensor','value', 'user_id'];
 
     public function user()
     {
