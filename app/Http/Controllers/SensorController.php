@@ -12,8 +12,13 @@ class SensorController extends Controller
         $this->middleware('auth:sanctum');
     }
 
-    public function getLed(){
-        $sensores = Sensor::where('sensor', 'led')->get();
+    public function getLed1(){
+        $sensores = Sensor::where('sensor', 'led1')->get();
+        return response()->json(['sensores'=>$sensores], 200);
+    }
+
+    public function getLed2(){
+        $sensores = Sensor::where('sensor', 'led2')->get();
         return response()->json(['sensores'=>$sensores], 200);
     }
 

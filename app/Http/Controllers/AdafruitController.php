@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Mail;
 
 class AdafruitController extends Controller
 {
-    private $key = "aio_NOtK07inOFWsf7zU8hjtRYyyEhUT";
+    private $key = "aio_rOBR01ZRc9XOmT0tr8BCDMT25ZQV";
 
     public function __construct()
     {
@@ -39,7 +39,7 @@ class AdafruitController extends Controller
         ]);
         Mail::to($request->user())->send(new LedAction($num, $value));
         $sensor = Sensor::create([
-            'sensor'=>'led',
+            'sensor'=>'led'.$num,
             'value'=>strval($value),
             'user_id'=>$request->user()->id
         ]);
@@ -115,7 +115,7 @@ class AdafruitController extends Controller
     }
 
     public function presencia(Request $request){
-        $url = "https://io.adafruit.com/api/v2/KappitaRoss/feeds/PIR/data?limit=1";
+        $url = "https://io.adafruit.com/api/v2/KappitaRoss/feeds/pir/data?limit=1";
         $response = Http::get($url, [
             'X-AIO-Key' => $this->key,
             'limit' => '1'
